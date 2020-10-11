@@ -1,44 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Weather App</title>
-        <style type="text/css">
-            html {
-                height: 100%;
-            }
-            body {
-                height: 100%;
-                margin: 0;
-                background: #0a1f44;
-                display: flex;
-                align-items: center;
-                text-align: center;
-                justify-content: center;
-            }
-        
-            .city {
-                align-items: center;
-                width: 80%;
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                padding: 40px 8%;
-                border-radius: 20px;
-                background: #fff;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weatherpedia</title>
+    <style type="text/css">
+      .container {
+        margin: 0 5rem;
+        font-family: "Poppins", sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .content {
+        text-align: center;
+        margin-top: -4rem;
+      }
+      h4 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+      }
+      .img {
+        width: 40rem;
+        border-radius: 50%;
+      }
+      @media screen and (max-width: 992px) {
+        .container {
+          margin: 0 3rem;
+        }
+        .img {
+          width: 30rem;
+          border-radius: 50%;
+        }
+      }
 
-            .city-name {
-                font-size: 2em;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="city">
-            <h2 class="city-name">
-                <span>Please go online to check the current weather.</span>
-            </h2>
-        </div>
-    </body>
+      /* On screens that are 600px or less, set the background color to olive */
+      @media screen and (max-width: 500px) {
+        .container {
+          margin: 0 1rem;
+        }
+        .img {
+          width: 20rem;
+          border-radius: 50%;
+        }
+        .content {
+          text-align: center;
+          margin-top: -3.5rem;
+        }
+        p {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://cdn.dribbble.com/users/3403/screenshots/3717272/no_connection.png"
+        class="img"
+        alt="Our Location"
+      />
+      <div class="content">
+        <h4>OOPS!</h4>
+        <p>Seems like you're internet connection is slow or missing.</p>
+        <p>Please check your internet settings.</p>
+      </div>
+    </div>
+  </body>
 </html>
