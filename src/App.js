@@ -17,7 +17,8 @@ const App = () => {
   };
 
   const backgroundImage = (weatherData) => {
-    let weatherImageUrl = "https://wallpaperaccess.com/full/568191.png";
+    let weatherImageUrl =
+      "https://u01.appmifile.com/images/2019/06/27/3dfbd421-111a-484b-a250-5521fe7e49cf.jpg";
     if (weatherData.weather) {
       const weatherId = weatherData.weather[0].id;
       if (weatherId <= 804 && weatherId >= 800) {
@@ -43,11 +44,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    async function firstFetchWeather() {
+    async function fetchSingaporeWeather() {
       const response = await fetchWeather();
       setWeather(response.data);
     }
-    firstFetchWeather();
+    fetchSingaporeWeather();
   }, []);
 
   return (
