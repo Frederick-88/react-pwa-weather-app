@@ -16,32 +16,6 @@ const App = () => {
     }
   };
 
-  const backgroundImage = (weatherData) => {
-    let weatherImageUrl = "https://wallpaperaccess.com/full/568191.png";
-    if (weatherData.weather) {
-      const weatherId = weatherData.weather[0].id;
-      if (weatherId <= 804 && weatherId >= 800) {
-        weatherImageUrl =
-          "https://cdn.dribbble.com/users/13449/screenshots/10094240/media/bbac9c3ddc0d46017085b7c7cafa5f6b.png";
-      } else if (weatherId <= 781 && weatherId >= 701) {
-        weatherImageUrl =
-          "https://cdn.dribbble.com/users/1786276/screenshots/6675059/14-1200.jpg";
-      } else if (weatherId <= 321 && weatherId >= 300) {
-        weatherImageUrl =
-          "https://cdn.dribbble.com/users/3178178/screenshots/9776963/media/a0663d51aad1c1528fe3a57e85bf3ed0.jpg";
-      } else if (weatherId <= 531 && weatherId >= 500) {
-        weatherImageUrl =
-          "https://cdn.dribbble.com/users/3178178/screenshots/11294232/media/d728d213fcded0f54ebdb73b540def36.jpg";
-      } else {
-        weatherImageUrl =
-          "https://cdn.dribbble.com/users/518045/screenshots/11604863/media/c6e2755cd5a30fecda85c2171b34b342.png";
-      }
-    }
-    return {
-      backgroundImage: `url(${weatherImageUrl})`,
-    };
-  };
-
   useEffect(() => {
     async function firstFetchWeather() {
       const response = await fetchWeather();
@@ -51,7 +25,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="main-container" style={backgroundImage(weather)}>
+    <div className="main-container">
       <input
         type="text"
         className="search"

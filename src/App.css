@@ -9,8 +9,7 @@ body,
 }
 
 .main-container {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)),
-    url("https://wallpaperaccess.com/full/568191.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
   background-size: cover;
   background-position: center;
 }
