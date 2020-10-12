@@ -9,9 +9,9 @@ const App = () => {
 
   const search = async (e) => {
     if (e.key === "Enter") {
-      const data = await fetchWeather(query);
-
-      setWeather(data);
+      const response = await fetchWeather(query);
+      console.log(response);
+      setWeather(response.data);
       setQuery("");
     }
   };
@@ -41,6 +41,25 @@ const App = () => {
     return {
       backgroundImage: `url(${weatherImageUrl})`,
     };
+  };
+
+  const weatherName = (weatherData) => {
+    let weatherDataName = "Sunny";
+    if (weatherData.weather) {
+      const weatherId = weatherData.weather[0].id;
+      if (weatherId <= 804 && weatherId >= 800) {
+        weatherDataName = "Sunny";
+      } else if (weatherId <= 781 && weatherId >= 701) {
+        weatherDataName = "Windy";
+      } else if (weatherId <= 321 && weatherId >= 300) {
+        weatherDataName = "Cloudy";
+      } else if (weatherId <= 531 && weatherId >= 500) {
+        weatherDataName = "Rainy";
+      } else {
+        weatherDataName = "Storm";
+      }
+    }
+    return weatherDataName;
   };
 
   useEffect(() => {
@@ -77,7 +96,9 @@ const App = () => {
               src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
               alt={weather.weather[0].description}
             />
-            <p>{weather.weather[0].description}</p>
+            <p>
+              {weatherName(weather)} - {weather.weather[0].description}
+            </p>
           </div>
         </div>
       ) : (
