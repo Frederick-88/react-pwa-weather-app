@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 
 import { fetchWeather } from "./api/fetchWeather";
+import searchIcon from "./search.png";
 import "./App.css";
 
 const App = () => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
 
-  const search = async (e) => {
-    if (e.key === "Enter") {
+  const search = async (event) => {
+    if (event.key === "Enter") {
       const response = await fetchWeather(query);
       setWeather(response.data);
       setQuery("");
     }
+  };
+
+  const searchCity = async (e) => {
+    const response = await fetchWeather(query);
+    setWeather(response.data);
+    setQuery("");
   };
 
   const backgroundImage = (weatherData) => {
@@ -71,14 +78,24 @@ const App = () => {
 
   return (
     <div className="main-container" style={backgroundImage(weather)}>
-      <input
-        type="text"
-        className="search"
-        placeholder="Search City/Country..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyPress={search}
-      />
+      <div className="input-icon-wrap">
+        <button
+          type="button"
+          onClick={(event) => searchCity(event)}
+          className="input-icon"
+        >
+          <img src={searchIcon} alt="search-icon" className="search-icon" />
+        </button>
+        <input
+          type="text"
+          className="input-with-icon"
+          placeholder="Search City/Country..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyPress={search}
+        />
+      </div>
+
       {weather.main ? (
         <div className="city">
           <h2 className="city-name">
