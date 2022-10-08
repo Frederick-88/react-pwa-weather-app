@@ -1,5 +1,6 @@
 const CACHE_NAME = "version-1";
-const urlsToCache = ["index.html", "offline.html", "no-internet.webp"];
+// const urlsToCache = ["index.html", "offline.html", "no-internet.webp"];
+const urlsToCache = ["index.html", "offline.html"];
 
 const self = this;
 
